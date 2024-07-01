@@ -10,7 +10,7 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const currentPage = Number(searchParams.get('page')) || 1;
-  // const allPages = generatePagination(currentPage, totalPages);
+  const allPages = generatePagination(currentPage, totalPages);
   const createPageURL = (pageNumber: number | string) => {
     const params = new URLSearchParams(searchParams);
     params.set('page', pageNumber.toString());
@@ -20,7 +20,7 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
     <>
       {/* NOTE: comment in this code when you get to this point in the course */}
 
-      {/* <div className="inline-flex">
+      <div className="inline-flex">
         <PaginationArrow
           direction="left"
           href={createPageURL(currentPage - 1)}
@@ -53,7 +53,7 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
           href={createPageURL(currentPage + 1)}
           isDisabled={currentPage >= totalPages}
         />
-      </div> */}
+      </div>
     </>
   );
 }
